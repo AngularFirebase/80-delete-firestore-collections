@@ -1,6 +1,6 @@
-# Episode XY
+# Episode 80 - Delete Firestore Collections
 
-Watch the [screencast]()
+Watch the [screencast](https://angularfirebase.com/lessons)
 
 ## Usage
 
