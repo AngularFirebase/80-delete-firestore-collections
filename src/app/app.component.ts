@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { FirestoreService } from './firestore.service';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
@@ -10,10 +9,17 @@ import { Observable } from 'rxjs/Observable';
 })
 export class AppComponent implements OnInit {
 
+  widgets$: Observable<any>;
 
-  constructor(private afs: AngularFirestore) { }
+  constructor(public db: FirestoreService) { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.widgets$ = this.db.colRef.valueChanges()
+  }
+
+  deleteWidgets() {
+    this.db.deleteCollection('widgets', 5).subscribe()
+  }
 
 
 }
